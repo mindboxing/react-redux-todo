@@ -1,35 +1,41 @@
 import React from  "react";
 import Todo from "../Todo";
-import { render, screen, fireEvent, getByText } from "@testing-library/react";
+import { render, screen, fireEvent, cleanup } from "@testing-library/react";
 import { Provider } from "react-redux";
-import { createStore } from 'redux';
-import mockStore from 'redux-mock-store';
+import configureStore from 'redux-mock-store';
+import { toggleTodo } from '../../redux/actions';
 
-// const wrapper = (ui, store = createStore(() => {})) => (
-//   <Provider store={store}>{ui}</Provider>
-// );
-
-const wrapper = (ui, store = createStore(() => {})) => (
-  <Provider store={store}>{ui}</Provider>
-);
-
+const mockStore = configureStore([]);
 describe('Todo', () => {  
+  function renderComponent(state, ui) {
+    const store = mockStore(state);
+    return [render((
+        <Provider store={store}>
+            {ui}
+        </Provider>
+    )), store];
+  }
+
+  afterAll(cleanup);
+
   test('should render as todo', () => {       
     const todo = { id: 1, content: "TEST", completed: false };
-    const renderResult = render(wrapper(<Todo key={`todo-${todo.id}`} todo={todo}/>));
-    expect(renderResult).toMatchSnapshot();
+    renderComponent({todo}, <Todo key={`todo-${todo.id}`} todo={todo} />);    
+    screen.getByText("👋");
+    screen.getByText("TEST");
   });    
 
   test('should render as completed', () => {
     const todo = { id: 1, content: "TEST", completed: true };
-    const tree = render(wrapper(<Todo key={`todo-${todo.id}`} todo={todo}/>));
-    expect(tree).toMatchSnapshot();    
-  })  
+    renderComponent({todo}, <Todo key={`todo-${todo.id}`} todo={todo} />);    
+    screen.getByText("👌");
+    screen.getByText("TEST");
+  });
 
   test('should clicked on todo will toggle', () => {
-    const todo = { id: 1, content: "TEST", completed: true };
-    
-    render(wrapper(<Todo key={`todo-${todo.id}`} todo={todo} />));
+    const todo = { id: 1, content: "TEST", completed: true };    
+    const [, store] = renderComponent({todo}, <Todo key={`todo-${todo.id}`} todo={todo} />);
     fireEvent.click(screen.getByText("TEST"));
-  })
+    expect(store.getActions()).toContainEqual(toggleTodo(todo.id));
+  });
 });
