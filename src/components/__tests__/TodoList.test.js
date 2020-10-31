@@ -15,6 +15,9 @@ function renderComponent(ui, state={}) {
 }
 
 describe('TodoList', () => {
+
+  afterAll(cleanup);
+  
   test('should render with no todos', () => {
     const state = {
       todos: {
