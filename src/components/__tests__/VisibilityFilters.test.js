@@ -27,7 +27,8 @@ describe('VisibilityFilters', () => {
   
   test('should render all', () => {
     renderComponent(<VisibilityFilters />, { visibilityFilters: "all" });
-    screen.debug();
+    const element = screen.getByText("all");
+    expect(element).toHaveClass("filter--active");
   })
 
   test('should dispatch setFilters on clicked all', () => {
