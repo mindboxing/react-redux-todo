@@ -2,7 +2,8 @@ import React from 'react';
 import cx from 'classnames';
 import { connect } from 'react-redux';
 import { setFilter } from '../redux/actions';
-import { VISIBILITY_FILTERS } from '../constants'
+import { VISIBILITY_FILTERS } from '../constants';
+import PropTypes from 'prop-types';
 
 const VisibilityFilters = ({ activeFilter, setFilter }) => {
     return (
@@ -29,6 +30,11 @@ const VisibilityFilters = ({ activeFilter, setFilter }) => {
         </div>
     );
 };
+
+VisibilityFilters.propTypes = {
+  activeFilter: PropTypes.string,
+  setFilter: PropTypes.func
+}
 
 const mapStateToProps = state => {
     return { activeFilter: state.visibilityFilters };
