@@ -18,11 +18,9 @@ describe('VisibilityFilters', () => {
 
   afterAll(cleanup);
 
-  test('should render', () => {
-    renderComponent(<VisibilityFilters />);
-    screen.findByText("all");
-    screen.findByText("completed");
-    screen.findByText("incomplete");
+  test('should render', async () => {
+    const ui = renderComponent(<VisibilityFilters />);
+    expect(ui).toMatchSnapshot();
   })
   
   test('should render all', () => {

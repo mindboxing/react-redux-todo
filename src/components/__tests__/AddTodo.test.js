@@ -19,8 +19,8 @@ describe('AddTodo', () => {
   afterAll(cleanup);
 
   test('should render', () => {
-    renderComponent(<AddTodo/>);
-    screen.debug();
+    const ui = renderComponent(<AddTodo/>);
+    expect(ui).toMatchSnapshot();
   })
   
   test('should dispatch addTodo by clicking Add Todo button ', () => {

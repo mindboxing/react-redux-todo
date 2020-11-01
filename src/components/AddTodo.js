@@ -1,36 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { addTodo } from '../redux/actions';
 import PropTypes from 'prop-types';
 
-class AddTodo extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { input: '' };
-    }
 
-    updateInput = input => {
-        this.setState({ input });
-    }
+function AddTodo(props) {
+  const [input, setInput] = useState("");
 
-    handleAddTodo = () => {
-        this.props.addTodo(this.state.input);
-        this.setState({ input: "" });
-    }
+  const handleAddTodo = () => {
+    props.addTodo(input);
+    setInput("");
+  }
 
-    render() {
-        return (
-            <div>
-                <input
-                    onChange={e => this.updateInput(e.target.value)}
-                    value={this.state.input}
-                />
-                <button className="add-todo" onClick={this.handleAddTodo}>
-                    Add Todo
-                </button>                
-            </div>
-        );
-    }
+  return (
+    <div>
+        <input
+            onChange={e => setInput(e.target.value)}
+            value={input}
+        />
+        <button className="add-todo" onClick={handleAddTodo}>
+            Add Todo
+        </button>                
+    </div>
+  );  
 }
 
 AddTodo.propTypes = {
