@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addTodo } from '../redux/actions';
-import PropTypes from 'prop-types';
-
 
 function AddTodo(props) {
   const [input, setInput] = useState("");
-
+  const dispatch = useDispatch();
   const handleAddTodo = () => {
-    props.addTodo(input);
+    dispatch(addTodo(input));
     setInput("");
   }
 
@@ -25,11 +23,4 @@ function AddTodo(props) {
   );  
 }
 
-AddTodo.propTypes = {
-    addTodo: PropTypes.func
-}
-
-export default connect(
-    null, 
-    { addTodo }
-)(AddTodo);
+export default AddTodo;

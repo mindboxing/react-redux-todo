@@ -1,11 +1,13 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import cx from 'classnames';
 import { toggleTodo } from '../redux/actions';
 import PropTypes from 'prop-types';
 
-const Todo = ({ todo, toggleTodo }) => (
-    <li className="todo-item" onClick={() => toggleTodo(todo.id)}>
+const Todo = ({ todo }) => {
+  const dispatch = useDispatch();
+  return (
+    <li className="todo-item" onClick={() => dispatch(toggleTodo(todo.id))}>
         {todo && todo.completed ? "👌" : "👋"}
         <span className={cx(
             "todo-item__text",
@@ -14,14 +16,11 @@ const Todo = ({ todo, toggleTodo }) => (
             {todo.content}
         </span>
     </li>
-);
+  )
+};
 
 Todo.propTypes = {
-  todo: PropTypes.object.isRequired,
-  toggleTodo: PropTypes.func.isRequired
+  todo: PropTypes.object.isRequired
 }
 
-export default connect(
-    null,
-    { toggleTodo }
-)(Todo);
+export default Todo;

@@ -1,11 +1,14 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Todo from './Todo';
 import { getTodosByVisibilityFilter } from '../redux/selectors';
-// import { VISIBILITY_FILTERS } from "../constants"
-import PropTypes from 'prop-types';
 
-const TodoList = ({ todos }) => (
+const TodoList = () => {
+  const todos = useSelector(state => {
+    const { visibilityFilter } = state;
+    return getTodosByVisibilityFilter(state, visibilityFilter);
+  });
+  return (
     <ul className="todo-list">
         {todos && todos.length
             ?   todos.map((todo) => {
@@ -14,16 +17,7 @@ const TodoList = ({ todos }) => (
             :   'No todos, yay!'
         }
     </ul>
-)
-
-TodoList.propTypes = {
-  todos: PropTypes.array
+  )
 }
 
-const mapStateToProps = state => {
-  const { visibilityFilter } = state;
-  const todos = getTodosByVisibilityFilter(state, visibilityFilter);
-  return { todos };
-};
-
-export default connect(mapStateToProps)(TodoList);
+export default TodoList
