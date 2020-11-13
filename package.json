@@ -13,15 +13,15 @@
     "react-redux": "^7.2.1",
     "react-scripts": "3.4.3",
     "redux": "^4.0.5",
-    "sass": "^1.27.0",
-    "typescript": "^3.2.1"
+    "sass": "^1.27.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "coverage": "react-scripts test --env=jsdom --coverage --watchAll"
+    "coverage": "react-scripts test --env=jsdom --coverage --watchAll",
+    "mock-api": "node ./mock-api/app.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -43,9 +43,12 @@
     "@babel/preset-react": "^7.12.1",
     "@typescript-eslint/eslint-plugin": "^4.5.0",
     "@typescript-eslint/parser": "^4.5.0",
+    "connect-api-mocker": "^1.9.0",
     "eslint-plugin-react": "^7.21.5",
+    "express": "^4.17.1",
     "react-test-renderer": "^16.14.0",
-    "redux-mock-store": "^1.5.4"
+    "redux-mock-store": "^1.5.4",
+    "typescript": "^3.9.7"
   },
   "jest": {
     "collectCoverageFrom": [
