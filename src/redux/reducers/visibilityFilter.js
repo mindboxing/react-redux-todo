@@ -1,7 +1,7 @@
 import { SET_FILTER } from "../actionTypes";
 import { VISIBILITY_FILTERS } from "../../constants"
 
-export const initialState = VISIBILITY_FILTERS;
+export const initialState = VISIBILITY_FILTERS.ALL;
 
 const visibilityFilter = (state = initialState, action) => {
   if (!action) {
