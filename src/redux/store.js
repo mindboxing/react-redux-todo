@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware } from 'redux';
 import rootReducer from "./reducers";
 import createSagaMiddleware from 'redux-saga';
-import { rootSaga } from './sagas';
+import rootSaga from './sagas';
 import { initialState as todos } from "./reducers/todos";
 import { initialState as visibilityFilter } from "./reducers/visibilityFilter";
 import { composeWithDevTools } from 'redux-devtools-extension';

@@ -1,3 +1,10 @@
 export const ADD_TODO = "ADD_TODO";
+export const ADD_TODO_SUCCESS = "ADD_TODO_SUCCESS";
+export const ADD_TODO_FAIL = "ADD_TODO_FAIL";
 export const TOGGLE_TODO = "TOGGLE_TODO";
+export const TOGGLE_TODO_SUCCESS = "TOGGLE_TODO_SUCCESS";
+export const TOGGLE_TODO_FAIL = "TOGGLE_TODO_FAIL";
 export const SET_FILTER = "SET_FILTER";
+export const GET_TODO = "GET_TODO";
+export const GET_TODO_SUCCESS = "GET_TODO_SUCCESS";
+export const GET_TODO_FAIL = "GET_TODO_FAIL";
