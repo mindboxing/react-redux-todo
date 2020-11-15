@@ -1,4 +1,4 @@
-import { ADD_TODO, ADD_TODO_SUCCESS, TOGGLE_TODO } from '../actionTypes';
+import { ADD_TODO_SUCCESS, TOGGLE_TODO } from '../actionTypes';
 
 export const initialState = {
     allIds: [],

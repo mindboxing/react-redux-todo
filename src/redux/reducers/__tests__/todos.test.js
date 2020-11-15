@@ -2,7 +2,7 @@ import todos, { initialState } from '../todos';
 import { addTodo, toggleTodo, setFilter, addTodoSuccess } from '../../actions';
 import { VISIBILITY_FILTERS } from '../../../constants';
 
-describe('Reducer Test', () => {
+describe('todos Reducer Test', () => {
   let state;
 
   beforeEach(() => {

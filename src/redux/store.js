@@ -4,6 +4,7 @@ import createSagaMiddleware from 'redux-saga';
 import rootSaga from './sagas';
 import { initialState as todos } from "./reducers/todos";
 import { initialState as visibilityFilter } from "./reducers/visibilityFilter";
+import { initialState as error } from "./reducers/error";
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 const composeEnhancers = composeWithDevTools({
@@ -12,7 +13,7 @@ const composeEnhancers = composeWithDevTools({
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
   rootReducer,
-  { todos, visibilityFilter },
+  { todos, visibilityFilter, error },
   composeEnhancers(applyMiddleware(sagaMiddleware))  
 );
 sagaMiddleware.run(rootSaga);
