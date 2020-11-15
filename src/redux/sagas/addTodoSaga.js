@@ -4,16 +4,11 @@ import { add } from '../../api/todoApi'
 import { addTodoSuccess, addTodoFail } from '../actions'
 
 export function* addTodo(todo) {
-  if (typeof todo === 'undefined') {
-    // TODO why this happen on init?
-    return;
-  } 
-
-  try {    
-    yield call(add, todo.payload);
+  const result = yield call(add, todo.payload);
+  if (result.httpStatus === 201) {
     yield put(addTodoSuccess(todo.payload));
-  } catch (error) {
-    yield put(addTodoFail(error));
+  } else {
+    yield put(addTodoFail(result));
   }
 }
 

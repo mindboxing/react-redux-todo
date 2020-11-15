@@ -1,5 +1,5 @@
 import todos, { initialState } from '../todos';
-import { addTodo, toggleTodo, setFilter } from '../../actions';
+import { addTodo, toggleTodo, setFilter, addTodoSuccess } from '../../actions';
 import { VISIBILITY_FILTERS } from '../../../constants';
 
 describe('Reducer Test', () => {
@@ -7,7 +7,8 @@ describe('Reducer Test', () => {
 
   beforeEach(() => {
     state = todos();
-    state = todos(initialState, addTodo("Test"));
+    const {payload} = addTodo("Test");
+    state = todos(initialState, addTodoSuccess(payload));
   });
 
   it('should reduce action ADD_TODO', () => {      

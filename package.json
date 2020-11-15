@@ -59,6 +59,11 @@
       "!<rootDir>/node_modules/",
       "!<rootDir>/path/to/dir/",
       "!src/index.js"
+    ],
+    "coveragePathIgnorePatterns": [
+      "src/api/todoApi.js",
+      "src/redux/sagas/index.js",
+      "src/redux/store.js"
     ]
   },
   "proxy": "http://localhost:9000"
