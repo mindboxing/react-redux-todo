@@ -4,11 +4,11 @@ import { add } from '../../api/todoApi'
 import { addTodoSuccess, addTodoFail } from '../actions'
 
 export function* addTodo(todo) {
-  const result = yield call(add, todo.payload);
-  if (result.httpStatus === 201) {
+  try {    
+    yield call(add, todo.payload);
     yield put(addTodoSuccess(todo.payload));
-  } else {
-    yield put(addTodoFail(result));
+  } catch (error) {
+    yield put(addTodoFail(error));
   }
 }
 
