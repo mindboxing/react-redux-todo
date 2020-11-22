@@ -1,4 +1,4 @@
-import { ADD_TODO, TOGGLE_TODO, SET_FILTER, ADD_TODO_SUCCESS, ADD_TODO_FAIL } from "./actionTypes";
+import { ADD_TODO, ADD_TODO_SUCCESS, ADD_TODO_FAIL, TOGGLE_TODO, TOGGLE_TODO_SUCCESS, TOGGLE_TODO_FAIL, SET_FILTER } from "./actionTypes";
 
 let nextTodoId = 0;
 
@@ -24,10 +24,21 @@ export const addTodoSuccess = (todo) => ({
   }
 });
 
-
 export const toggleTodo = id => ({
-    type: TOGGLE_TODO,
-    payload: { id }
+  type: TOGGLE_TODO,
+  payload: { id }
+});
+
+export const toggleSuccess = id => ({
+  type: TOGGLE_TODO_SUCCESS,
+  payload: { id }
+});
+
+export const toggleFail = (error) => ({
+  type: TOGGLE_TODO_FAIL,
+  payload: {
+      error
+  }
 });
 
 export const setFilter = filter => ({

@@ -1,4 +1,4 @@
-import { ADD_TODO_FAIL } from '../actionTypes';
+import { ADD_TODO_FAIL, TOGGLE_TODO_FAIL } from '../actionTypes';
 
 export const initialState = {
     error: false,
@@ -6,20 +6,20 @@ export const initialState = {
 }
 
 export const error = (state = initialState, action) => {
-  if (!action) {
-    return state;
-  }
-  switch (action.type) {
-    case ADD_TODO_FAIL: 
-      const resp = action.payload.error.response;
+  const type = action?.type  
+  switch (type) {
+    case TOGGLE_TODO_FAIL:
+    case ADD_TODO_FAIL: {
+      const resp = action?.payload?.error?.response;
       return (resp) 
       ? { error: true, message: `${resp.status} : ${resp.statusText}`} 
-      : state
+      : state    
+    }
     default: return {
       error: false,
       message: null
     }
-  }
+  }  
 }
 
 export default error;

@@ -1,0 +1,58 @@
+1- actionTypes
+2- constants
+
+3- reducer
+4- combineReducers
+5- create stores
+6- Setup <Provider>
+
+*- Component
+    - mapStateToProps
+        - state
+    - mapDispatchToProps
+        - action
+
+* action
+
+
+TODO
+- hooks
+  [DONE] useState
+  [DONE] useSelector
+  [DONE] useDispatch
+  [ ] useEffect
+- typescript  
+  [?] function type
+  [?] propTypes
+  [ ] Constant to enums
+- middlware
+  [ ] Redux-Saga
+    - [DONE] toggleTodo
+        [DONE] Generator Function
+        [DONE] Error Handling
+        [DONE] Unit Test
+    - [DONE] addTodo
+        [DONE] Generator Function
+        [DONE] Error Handling
+        [DONE] Unit Test
+    - [ ] getTodo
+        [ ] Generator Function
+        [ ] Error Handling
+        [ ] Unit Test
+    - [DONE] api
+        [DONE] axio implementation
+        [DONE] Unit Test - skip coverage
+- mock
+  [DONE] Simple mock to get existing data
+  [DONE] add proxy in package.json
+- README
+  [ ] React-Redux
+    - useSelector
+    - useDispatch
+  [ ] Saga
+  [ ] Mock
+- react concept
+  [ ] ref
+  [ ] error boundaries
+- router
+  [?] page

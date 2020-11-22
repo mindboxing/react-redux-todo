@@ -1,4 +1,4 @@
-import { ADD_TODO_SUCCESS, TOGGLE_TODO } from '../actionTypes';
+import { ADD_TODO_SUCCESS, TOGGLE_TODO_SUCCESS } from '../actionTypes';
 
 export const initialState = {
     allIds: [],
@@ -25,7 +25,7 @@ export const todos = (state = initialState, action) => {
             }
         };
 
-        case TOGGLE_TODO: {
+        case TOGGLE_TODO_SUCCESS: {
             const { id } = action.payload;
             return {
                 ...state,
